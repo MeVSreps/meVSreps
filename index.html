@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RateMyCouncilMember – Hooper City</title>
+    <style>
+        body {font-family:Arial,sans-serif;max-width:800px;margin:0 auto;padding:20px}
+        h1,h2{text-align:center}
+        .sel{text-align:center;margin:20px 0}
+        select{padding:8px;font-size:16px}
+        .section{margin:20px 0;padding:15px;border:1px solid #ddd;border-radius:5px;display:none}
+        .issue{margin:10px 0;padding:10px;background:#f9f9f9}
+        .vote{display:block;padding:10px;background:#007bff;color:#fff;text-align:center;border-radius:5px;text-decoration:none}
+        .disclaimer{font-size:.9em;color:#666;text-align:center;margin-top:20px}
+    </style>
+</head>
+<body>
+    <h1>RateMyCouncilMember – Hooper City</h1>
+    <p style="text-align:center">Select your district to vote on rescinding the Mayor’s powers.</p>
+
+    <div class="sel">
+        <label for="dist">Your District: </label>
+        <select id="dist" onchange="show()">
+            <option value="">– Select –</option>
+            <option value="1">District 1</option>
+            <option value="2">District 2</option>
+            <option value="3">District 3</option>
+        </select>
+        <br><br>
+        <input type="checkbox" id="res"> I confirm I’m a Hooper City resident.
+    </div>
+
+    <!-- DISTRICT 1 – Lisa Northrop -->
+    <div id="d1" class="section">
+        <h2>District 1 – Lisa Northrop</h2>
+        <div class="issue">
+            <strong>Do you support rescinding the Mayor’s powers to the city council?</strong><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIrK_1t8yUU-yPaZkUpQx1t8VpDyzA2w4_I04pyDs4gVWbZg/viewform?usp=pp_url&entry.2057591059=Northrop+District+1"
+               target="_blank" class="vote">Vote Yes / No</a>
+        </div>
+    </div>
+
+    <!-- DISTRICT 2 – Bryce Wilcox -->
+    <div id="d2" class="section">
+        <h2>District 2 – Bryce Wilcox</h2>
+        <div class="issue">
+            <strong>Do you support rescinding the Mayor’s powers to the city council?</strong><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIrK_1t8yUU-yPaZkUpQx1t8VpDyzA2w4_I04pyDs4gVWbZg/viewform?usp=pp_url&entry.2057591059=Wilcox+District+2"
+               target="_blank" class="vote">Vote Yes / No</a>
+        </div>
+    </div>
+
+    <!-- DISTRICT 3 – Debra Marigoni -->
+    <div id="d3" class="section">
+        <h2>District 3 – Debra Marigoni</h2>
+        <div class="issue">
+            <strong>Do you support rescinding the Mayor’s powers to the city council?</strong><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIrK_1t8yUU-yPaZkUpQx1t8VpDyzA2w4_I04pyDs4gVWbZg/viewform?usp=pp_url&entry.2057591059=Marigoni+District+3"
+               target="_blank" class="vote">Vote Yes / No</a>
+        </div>
+    </div>
+
+    <!-- AT-LARGE 1 – Ryan Hill -->
+    <div id="a1" class="section">
+        <h2>At-Large – Ryan Hill</h2>
+        <div class="issue">
+            <strong>Do you support rescinding the Mayor’s powers to the city council?</strong><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIrK_1t8yUU-yPaZkUpQx1t8VpDyzA2w4_I04pyDs4gVWbZg/viewform?usp=pp_url&entry.2057591059=Hill+At-Large"
+               target="_blank" class="vote">Vote Yes / No</a>
+        </div>
+    </div>
+
+    <!-- AT-LARGE 2 – Dale Fowers -->
+    <div id="a2" class="section">
+        <h2>At-Large – Dale Fowers</h2>
+        <div class="issue">
+            <strong>Do you support rescinding the Mayor’s powers to the city council?</strong><br>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIrK_1t8yUU-yPaZkUpQx1t8VpDyzA2w4_I04pyDs4gVWbZg/viewform?usp=pp_url&entry.2057591059=Fowers+At-Large"
+               target="_blank" class="vote">Vote Yes / No</a>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        One vote per resident. Results go to Google Sheets (admin view only). Anonymous & community-driven.
+    </div>
+
+    <script>
+        function show() {
+            const d = document.getElementById('dist').value;
+            const resident = document.getElementById('res').checked;
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            if (!d) return;
+            if (!resident) { alert('Please confirm residency.'); return; }
+
+            document.getElementById('d' + d).style.display = 'block';
+            document.getElementById('a1').style.display = 'block';
+            document.getElementById('a2').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
