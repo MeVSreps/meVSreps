@@ -28,73 +28,46 @@
         /* Mobile: Stack charts */
         @media (max-width: 768px) {
             .chart-box {flex:1 1 100%; max-width:100%;}
-            .chart-box iframe {width:100%; max-width:400px; height:400px; margin:0 auto; display:block;}
+            .chart-box iframe {width:100%; max-width:400px; height:400px; margin:0 auto; leasing:block;}
         }
+
+        /* Map link style */
+        .map-link {display:block; text-align:center; margin:15px 0; font-size:1em;}
+        .map-link a {color:#0066cc; text-decoration:underline;}
+        .map-link a:hover {color:#004499;}
     </style>
 </head>
 <body>
 
     <h1>meVsrep – Hooper City</h1>
-    <p style="text-align:center">Vote below to tell your councilmember how to vote on rescinding the Mayor’s powers.
+    <p style="text-align:center">
+        Vote below to tell your councilmember how to vote on rescinding the Mayor’s powers.
         <br><br>
-        Scroll to bottom to select your District and vote.
-        <br><br>
-        You will vote for your District Council Member as well as both at large Council Members
+         You will vote for your District Council Member as well as both at-large Council Members.
         <br><br>
         Community-driven, not official.
     </p>
+ <!-- ====================== DISTRICT SELECTOR + MAP LINK ====================== -->
+ <div class="sel">
+    <input type="checkbox" id="res"> I confirm I’m a Hooper City resident.
+    <br><br>
+    <label for="dist">Your District: </label>
+    <select id="dist" onchange="show()">
+        <option value="">– Select –</option>
+        <option value="1">District 1</option>
+        <option value="2">District 2</option>
+        <option value="3">District 3</option>
+    </select>
+    <br><br>
 
-    <!-- ====================== LIVE RESULTS: ALWAYS VISIBLE ====================== -->
-    <div id="results-section">
-        <h2>Live Results </h2>
-        <p style="font-size:0.9em; color:#666; text-align:center;">Updates automatically as votes come in</p>
-
-        <div class="charts-container">
-            <!-- District 1 – Lisa Northrop -->
-            <div class="chart-box">
-                <h3>District 1 – Lisa Northrop</h3>
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=241493125&format=interactive" allowfullscreen></iframe>
-            </div>
-
-            <!-- At-Large – Bryce Wilcox -->
-            <div class="chart-box">
-                <h3>District 2 – Bryce Wilcox</h3>
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=1215085439&format=interactive" allowfullscreen></iframe>
-            </div>
-
-            <!-- District 2 – Debra Marigoni -->
-            <div class="chart-box">
-                <h3>District 2 – Debra Marigoni</h3>
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=90207625&format=interactive" allowfullscreen></iframe>
-            </div>
-
-            <!-- At-Large – Ryan Hill -->
-            <div class="chart-box">
-                <h3>At-Large – Ryan Hill</h3>
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=79625291&format=interactive" allowfullscreen></iframe>
-            </div>
-
-            <!-- District 3 – Dale Fowers -->
-            <div class="chart-box">
-                <h3>At-Large – Dale Fowers</h3>
-                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=1090997197&format=interactive" allowfullscreen></iframe>
-            </div>
-        </div>
+    <!-- MAP LINK -->
+    <div class="map-link">
+        <strong>Don’t know your district?</strong> 
+        <a href="https://www.hoopercity.gov/meet-your-city-officials" target="_blank">
+            View the district map here
+        </a>
     </div>
-
-    <!-- ====================== DISTRICT SELECTOR ====================== -->
-    <div class="sel">
-        <input type="checkbox" id="res"> I confirm I’m a Hooper City resident.
-        <br><br>
-        <label for="dist">Your District: </label>
-        <select id="dist" onchange="show()">
-            <option value="">– Select –</option>
-            <option value="1">District 1</option>
-            <option value="2">District 2</option>
-            <option value="3">District 3</option>
-        </select>
-        <br><br>
-    </div>
+</div>
 
     <!-- DISTRICT SECTIONS (hidden until selected) -->
     <div id="d1" class="section">
@@ -130,8 +103,50 @@
     </div>
 
     <div class="disclaimer">
-         1 vote per Voter Registered on voting rolls. Community-driven, not official.
+        1 vote per voter registered on voting rolls. Community-driven, not official.
     </div>
+
+    <!-- ====================== LIVE RESULTS: ALWAYS VISIBLE ====================== -->
+    <div id="results-section">
+        <h2>Live Results</h2>
+        <p style="font-size:0.9em; color:#666; text-align:center;">
+            Updates (usually within 1–2 minutes)  Might have to refresh the page
+        </p>
+
+        <div class="charts-container">
+            <!-- District 1 – Lisa Northrop -->
+            <div class="chart-box">
+                <h3>District 1 – Lisa Northrop</h3>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=241493125&format=interactive" allowfullscreen></iframe>
+            </div>
+
+            <!-- At-Large – Ryan Hill -->
+            <div class="chart-box">
+                <h3>At-Large – Ryan Hill</h3>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=1215085439&format=interactive" allowfullscreen></iframe>
+            </div>
+
+            <!-- District 2 – Bryce Wilcox -->
+            <div class="chart-box">
+                <h3>District 2 – Bryce Wilcox</h3>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=90207625&format=interactive" allowfullscreen></iframe>
+            </div>
+
+            <!-- At-Large – Dale Fowers -->
+            <div class="chart-box">
+                <h3>At-Large – Dale Fowers</h3>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=79625291&format=interactive" allowfullscreen></iframe>
+            </div>
+
+            <!-- District 3 – Debra Marigoni -->
+            <div class="chart-box">
+                <h3>District 3 – Debra Marigoni</h3>
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRhNELutgY3RQNa8JlE17WSlp27msx9nJ3hntgHC2LUqoaiJNhzAr-Va21ZQKGjUVFRonbWTGTUCd0k/pubchart?oid=1090997197&format=interactive" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+   
 
     <script>
         function show() {
